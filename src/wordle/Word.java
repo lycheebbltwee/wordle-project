@@ -13,6 +13,11 @@ public class Word {
 	 * Fields
 	 */
 	private String word;
+	public static final int wordLength = 5;
+	public static final String ANSI_RESET = "\u001B[0m";
+	public static final String ANSI_RED = "\u001B[31m";
+	public static final String ANSI_GREEN = "\u001B[32m";
+	public static final String ANSI_YELLOW = "\u001B[33m";
 	
 	/*
 	 * Constructor
@@ -23,16 +28,17 @@ public class Word {
 	/*
 	 * Method to create word list
 	 */
-	private List<String> createWordList() {
+	private List<String> createRandomWordList() {
 		// File location
 		File file = new File("//Users/thuynguyen/_nology/Java/Wordle Project/src/wordle/word-list.json");
-		// Scanning file
+		// New scanner
 		Scanner scanner;
 		// New array list
 		List<String> data = new ArrayList<>();
 		
 		// Create list from file
 		try {
+			// Scanning file
 			scanner = new Scanner(file);
 			
 			while (scanner.hasNext()) {
@@ -54,7 +60,7 @@ public class Word {
 	}
 	
 	public String randomWord() {
-		List<String> wordList = createWordList();
+		List<String> wordList = createRandomWordList();
 		
 		Random rand = new Random();
 		
@@ -63,5 +69,7 @@ public class Word {
 		
 		return this.word;
 	}
+	
+	
 
 }
